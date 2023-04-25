@@ -62,14 +62,14 @@ const thoughtController = {
   // create reaction
   createReaction(req, res) {
     Thought.findOneAndUpdate({_id: req.params.thoughtId}, {$addToSet: {reactions: req.body}}, {runValidators: true, new:true})
-    .then((reaction) => !reaction ? res.status(400).json({message: 'No thought by that id'}) : res.json(reaction))
+    .then((reaction) => !reaction ? res.status(400).json({message: 'No thought with that id'}) : res.json(reaction))
     .catch((err) => res.status(400).json(err))
   },
 
   // delete reaction
   deleteReaction(req, res) {
     Thought.findOneAndUpdate({_id: req.params.thoughtId}, {$pull: {reactions:{reactionId: req.params.reactionId}}}, {runValidators:true, new:true})
-    .then((updatedthought) => !updatedthought ? res.status(400).json({message:'No thought by that id'}) : res.json((updatedthought)))
+    .then((updatedthought) => !updatedthought ? res.status(400).json({message:'No thought with that id'}) : res.json((updatedthought)))
     .catch((err) => res.status(400).json(err))
 }
 
