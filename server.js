@@ -40,8 +40,8 @@ app.use(require('./routes'));
 // app.use(require('./routes'));
 // app.use(routes);
 
-db.once("open",() => {
-  app.listen(PORT, () => { console.log(`Connected on localhost:${PORT}`)});
-});
+// db.once("open",() => {
+//   app.listen(PORT, () => { console.log(`Connected on localhost:${PORT}`)});
+// });
 
-
+db.once('open', () => { app.listen(PORT, () => { console.log(`API server running on port ${PORT}!`); }); }); 
